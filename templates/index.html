@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Reach Predictor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0px 4px 18px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Instagram Reach Prediction</h1>
+
+    <form action="/predict" method="post">
+
+        <label>Choose Model:</label>
+        <select name="model">
+            <option value="RandomForest">Random Forest</option>
+            <option value="PassiveAggressive">Passive Aggressive</option>
+        </select>
+
+        <label>Likes:</label>
+        <input type="number" name="likes" required>
+
+        <label>Saves:</label>
+        <input type="number" name="saves" required>
+
+        <label>Comments:</label>
+        <input type="number" name="comments" required>
+
+        <label>Shares:</label>
+        <input type="number" name="shares" required>
+
+        <label>Profile Visits:</label>
+        <input type="number" name="visits" required>
+
+        <label>Follows:</label>
+        <input type="number" name="follows" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Predicted Reach: {{ prediction }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
